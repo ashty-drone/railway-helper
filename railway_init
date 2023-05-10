@@ -14,4 +14,4 @@ cmd = f'cp {repo_name}/config.env catuserbot/'
 path = f'{repo_name}/config.env'
 if path.exists(path):
   load_dotenv(path)
-  run(cmd, shell=True')
+  run(cmd, shell=True)
