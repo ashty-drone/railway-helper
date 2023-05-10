@@ -3,4 +3,10 @@ git clone https://github.com/TgCatUB/catuserbot
 python3 -m pip install --upgrade pip wheel setuptools
 python3 -m pip install speedtest-cli git+https://github.com/yt-dlp/yt-dlp python-dotenv
 
-bash railway_init
+rm -f catuserbot/userbot/plugins/heroku.py
+cp railway.py catuserbot/userbot/plugins/heroku.py
+
+python3 railway_init
+
+cd catuserbot
+python3 -m userbot
