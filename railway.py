@@ -25,6 +25,9 @@ def load_environtment_variables():
     try: load_dotenv('config.env')
     except: pass
 
+print('Loading Config Variables')
+load_environment_variables()
+
 def runcmd(cmd):
     output = run(cmd, shell=True, capture_output=True)
 
