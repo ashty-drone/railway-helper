@@ -107,7 +107,6 @@ async def repoPushConfig(event, push=True):
     
     stdout, stderr = runcmd(cmd)
     
-    stdout, stderr = repoPushConfig(event)
     if 'error:' in stderr:
         with open('railwayConfigError.txt', 'w+') as r:
             r.write(stderr)
