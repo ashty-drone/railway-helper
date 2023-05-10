@@ -35,10 +35,7 @@ def runcmd(cmd):
 def _repoEdit(check=False):
     """This will ensure that the config repo is private."""
     GITHUB_ACCESS_TOKEN = token = os.getenv('GITHUB_ACCESS_TOKEN', None)
-    if token:
-        with open('token.txt', 'w+') as t: t.write(token)
-        os.unsetenv('GITHUB_ACCESS_TOKEN') # For security purpose.
-        
+    
     if check:
         exist = os.path.exists('token.txt')
         if not exist: err = "Token doesn't exist." if not token else False
@@ -67,6 +64,8 @@ def _repoEdit(check=False):
 
 async def repoPushConfig(event, push=True):
     """This will push the config.env file to your private repo."""
+    
+    GITHUB_ACCESS_TOKEN = token = os.getenv('GITHUB_ACCESS_TOKEN', None)
 
     # Well, first we need to check if we can push or not.
     err, error = _repoEdit(check=True)
@@ -94,6 +93,10 @@ async def repoPushConfig(event, push=True):
         return False
     
     if not push: return True
+  
+    if token:
+        with open('token.txt', 'w+') as t: t.write(token)
+        os.unsetenv('GITHUB_ACCESS_TOKEN') # For security purpose.
 
     if not token: token = str((open('token.txt')).read()).strip()
     
