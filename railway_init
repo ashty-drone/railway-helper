@@ -2,9 +2,9 @@ from subprocess import run
 from os import getenv, path
 from dotenv import load_dotenv
 
-token = os.getenv('GITHUB_ACCESS_TOKEN', None)
-owner = os.getenv('RAILWAY_GIT_REPO_OWNER')
-repo_name = os.getenv('RAILWAY_GIT_REPO_NAME')
+token = getenv('GITHUB_ACCESS_TOKEN', None)
+owner = getenv('RAILWAY_GIT_REPO_OWNER')
+repo_name = getenv('RAILWAY_GIT_REPO_NAME')
 if token: token.strip()
 
 cmd = f'git clone https://{token}@github.com/{owner}/{repo_name}'
