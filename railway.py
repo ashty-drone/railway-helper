@@ -34,6 +34,11 @@ def runcmd(cmd):
 
 def _repoEdit(check=False):
     """This will ensure that the config repo is private."""
+    GITHUB_ACCESS_TOKEN = token = os.getenv('GITHUB_ACCESS_TOKEN', None)
+    if token:
+        with open('token.txt', 'w+') as t: t.write(token)
+        os.unsetenv('GITHUB_ACCESS_TOKEN') # For security purpose.
+        
     if check:
         exist = os.path.exists('token.txt')
         if not exist: err = "Token doesn't exist." if not token else False
