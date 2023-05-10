@@ -221,8 +221,8 @@ async def variable(event):
             silent=True,
         )
         load_environtment_variables()
-        reload_codebase()
-        await event.client.reload(cat)
+        #reload_codebase()
+        #await event.client.reload(cat)
         
 
     elif cmd == 'del':
