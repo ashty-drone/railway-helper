@@ -217,9 +217,9 @@ async def variable(event):
             f"#CONFIG_VAR  #UPDATED\n\n`{variable}` = `{value}`",
             silent=True,
         )
+        load_environtment_variables()
         reload_codebase()
         await event.client.reload(cat)
-        load_environtment_variables()
         
 
     elif cmd == 'del':
@@ -251,8 +251,8 @@ async def variable(event):
         await event.client.send_message(
             BOTLOG_CHATID, f"#CONFIG_VAR  #DELETED\n\n`{variable}`", silent=True
         )
+        load_environtment_variables()
         reload_codebase()
         await event.client.reload(cat)
-        load_environtment_variables()
 
 
