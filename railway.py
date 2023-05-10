@@ -180,7 +180,7 @@ async def variable(event):
         if not value:
             return await edit_or_reply(cat, "`.set var <ConfigVars-name> <value>`")
         
-        if not repoPushConfig(event, push=False): return
+        if not await repoPushConfig(event, push=False): return
 
         try: open('config.env', 'x') 
         except: pass
@@ -200,7 +200,7 @@ async def variable(event):
             newLine = f'\n{variable} = {value}'
             with open('config.env', 'a') as config: config.write(newLine)
         
-        if not repoPushConfig(event): return
+        if not await repoPushConfig(event): return
 
         await edit_or_reply(
             cat, f"`{variable}` **successfully changed to  ->  **`{value}`"
@@ -220,7 +220,7 @@ async def variable(event):
             event, "`Getting information for deleting a variable...`"
         )
 
-        if not repoPushConfig(event, push=False): return
+        if not await repoPushConfig(event, push=False): return
 
         try: open('config.env', 'x') 
         except: pass
@@ -238,7 +238,7 @@ async def variable(event):
     
         if not done: return await edit_or_reply(cat, f"`{variable}`**  does not exist**")
 
-        if not repoPushConfig(event): return
+        if not await repoPushConfig(event): return
 
         await edit_or_reply(cat, f"`{variable}`  **successfully deleted**")
         await event.client.send_message(
