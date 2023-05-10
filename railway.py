@@ -21,7 +21,7 @@ if token:
     with open('token.txt', 'w+') as t: t.write(token)
     os.unsetenv('GITHUB_ACCESS_TOKEN') # For security purpose.
 
-def load_environtment_variables():
+def load_environment_variables():
     try: load_dotenv('config.env')
     except: pass
 
@@ -220,7 +220,7 @@ async def variable(event):
             f"#CONFIG_VAR  #UPDATED\n\n`{variable}` = `{value}`",
             silent=True,
         )
-        load_environtment_variables()
+        load_environment_variables()
         #reload_codebase()
         #await event.client.reload(cat)
         
@@ -254,7 +254,7 @@ async def variable(event):
         await event.client.send_message(
             BOTLOG_CHATID, f"#CONFIG_VAR  #DELETED\n\n`{variable}`", silent=True
         )
-        load_environtment_variables()
+        load_environment_variables()
         reload_codebase()
         await event.client.reload(cat)
 
