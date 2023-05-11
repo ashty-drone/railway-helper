@@ -129,7 +129,7 @@ async def repoPushConfig(event, push=True):
            f"git config --global user.name {author} &&"
             "git add config.py && git commit -m 'Update config.py' && git push")
     
-    run(cmd, shell=True)
+    run(cmd, shell=True, check=True)
     stderr = ''
     
     if 'error:' in stderr:
