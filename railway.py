@@ -46,13 +46,6 @@ if token:
     with open('token.txt', 'w+') as t: t.write(token)
     os.unsetenv('GITHUB_ACCESS_TOKEN') # For security purpose.
 
-def load_environment_variables():
-    try: load_dotenv('config.env')
-    except: pass
-
-print('Loading Config Variables')
-#load_environment_variables()
-
 def runcmd(cmd):
     output = run(cmd, shell=True, capture_output=True)
 
