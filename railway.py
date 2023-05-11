@@ -127,7 +127,8 @@ async def repoPushConfig(event, push=True):
            f"cp -f config.py {repo_name} && cd {repo_name} && "
             "git add config.py && git commit -m 'Update config.py' && git push")
     
-    stdout, stderr = runcmd(cmd)
+    run(cmd, shell=True)
+    stderr = ''
     
     if 'error:' in stderr:
         with open('railwayConfigError.txt', 'w+') as r:
