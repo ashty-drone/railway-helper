@@ -124,8 +124,8 @@ async def repoPushConfig(event, push=True):
     
     cmd = (f"rm -rf {repo_name} && "
            f"git clone https://{token}@github.com/{owner}/{repo_name} && "
-           f"cp -f config.env {repo_name} && cd {repo_name} && "
-            "git add config.env && git commit -m 'Update config.env' && git push")
+           f"cp -f config.py {repo_name} && cd {repo_name} && "
+            "git add config.py && git commit -m 'Update config.py' && git push")
     
     stdout, stderr = runcmd(cmd)
     
