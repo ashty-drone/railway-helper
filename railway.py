@@ -51,7 +51,7 @@ def load_environment_variables():
     except: pass
 
 print('Loading Config Variables')
-load_environment_variables()
+#load_environment_variables()
 
 def runcmd(cmd):
     output = run(cmd, shell=True, capture_output=True)
