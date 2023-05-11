@@ -14,6 +14,7 @@ from ..helpers.utils import _catutils
 plugin_category = "tools"
 
 # =========@ Constants @=========
+RAILWAY_GIT_AUTHOR = author = os.getenv('RAILWAY_GIT_AUTHOR')
 GITHUB_ACCESS_TOKEN = token = os.getenv('GITHUB_ACCESS_TOKEN', None)
 RAILWAY_GIT_REPO_OWNER = owner = os.getenv('RAILWAY_GIT_REPO_OWNER')
 RAILWAY_GIT_REPO_NAME = repo_name = os.getenv('RAILWAY_GIT_REPO_NAME')
@@ -125,6 +126,7 @@ async def repoPushConfig(event, push=True):
     cmd = (f"rm -rf {repo_name} && "
            f"git clone https://{token}@github.com/{owner}/{repo_name} && "
            f"cp -f config.py {repo_name} && cd {repo_name} && "
+           f"git config user.name {author} &&"
             "git add config.py && git commit -m 'Update config.py' && git push")
     
     run(cmd, shell=True)
